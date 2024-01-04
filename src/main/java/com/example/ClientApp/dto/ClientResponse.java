@@ -38,4 +38,7 @@ public class ClientResponse {
 
     @Column(nullable = false)
     private Integer score;
+
+    @Column(nullable = false)
+    private String descriptscore;
 }

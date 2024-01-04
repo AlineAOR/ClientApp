@@ -30,7 +30,6 @@ public class ClientService {
     @Autowired
     CepFeignClient cepFeignClient;
 
-
     public ClientEntity addClient(ClientRequest clientRequest) {
         ClientEntity clientEntity = modelMapper.map(clientRequest, ClientEntity.class);
 
