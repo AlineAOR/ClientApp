@@ -59,7 +59,7 @@ public class ClientService {
 
     public ClientResponse getClientById(Long id) {
         ClientEntity clientEntity = clientRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com id: " + id));
         return modelMapper.map(clientEntity, ClientResponse.class);
     }
 
@@ -71,7 +71,7 @@ public class ClientService {
 
     public ClientRequest updateByID(Long id, ClientRequest clientRequest) {
         ClientEntity existingClientEntity = clientRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com id: " + id));
         modelMapper.map(clientRequest, existingClientEntity);
         existingClientEntity.setId(id);
         ClientEntity clientEntity = clientRepository.save(existingClientEntity);

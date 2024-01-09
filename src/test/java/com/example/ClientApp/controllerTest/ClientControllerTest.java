@@ -40,10 +40,10 @@ public class ClientControllerTest {
         when(clientService.getAllClients()).thenReturn(clients);
         when(scoreService.getDescriptionScore(anyInt())).thenReturn(null);
 
-        // Act
+
         ResponseEntity<List<ClientResponse>> response = clientController.getAll();
 
-        // Assert
+
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(2, response.getBody().size());
@@ -51,17 +51,16 @@ public class ClientControllerTest {
         assertEquals(null, response.getBody().get(1).getDescriptscore());
     }
 
-    // Similar tests for other methods in ClientController...
 
     @Test
     void deleteById_ValidId_ReturnsOk() {
         // Arrange
         Long clientId = 1L;
 
-        // Act
+
         ResponseEntity<String> response = clientController.deleteById(clientId);
 
-        // Assert
+
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Cliente removido com sucesso.", response.getBody());
         verify(clientService, times(1)).deleteByID(clientId);
@@ -69,28 +68,27 @@ public class ClientControllerTest {
 
     @Test
     void deleteById_NonExistentId_ReturnsNotFound() {
-        // Arrange
+
         Long clientId = 1L;
         doThrow(EntityNotFoundException.class).when(clientService).deleteByID(clientId);
 
-        // Act
+
         ResponseEntity<String> response = clientController.deleteById(clientId);
 
-        // Assert
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertNull(response.getBody());
     }
 
     @Test
     void deleteById_ExceptionDuringDeletion_ReturnsInternalServerError() {
-        // Arrange
+
         Long clientId = 1L;
         doThrow(new RuntimeException("Mensagem de erro")).when(clientService).deleteByID(clientId);
 
-        // Act
+
         ResponseEntity<String> response = clientController.deleteById(clientId);
 
-        // Assert
+
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals("Erro ao remover o cliente.", response.getBody());
