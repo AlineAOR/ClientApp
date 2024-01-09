@@ -1,5 +1,6 @@
 package com.example.ClientApp.entities;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-@Data
+@EqualsAndHashCode(of = "id")
 public class UserEntity implements UserDetails {
 
     @Id

@@ -26,13 +26,14 @@ public class JWTConfig  {
         return  httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/index.html", "/swagger-ui/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/app/client-add").hasRole("ADMIN")
-
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize -> {
+                    authorize
+                            .requestMatchers(HttpMethod.GET, "/v3/api-docs/**", "/swagger-ui/index.html", "/swagger-ui/**").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/app/client-add").hasRole("ADMIN")
+                            .anyRequest().authenticated();
+                        }
 
 
                 )

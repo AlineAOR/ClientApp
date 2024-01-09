@@ -1,12 +1,14 @@
 package com.example.ClientApp.entities;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
+@Entity(name = "ClientEntity")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

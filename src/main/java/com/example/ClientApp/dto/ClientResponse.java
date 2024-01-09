@@ -6,13 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
 public class ClientResponse {
 
-    @Column(nullable = false)
+   @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)

@@ -16,6 +16,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/auth")
 public class UserController {
@@ -59,7 +60,7 @@ public class UserController {
 
             this.userRepository.save(newUser);
 
-            return ResponseEntity.ok(newUser);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
