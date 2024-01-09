@@ -5,7 +5,6 @@ import com.example.ClientApp.dto.ClientRequest;
 import com.example.ClientApp.dto.ClientResponse;
 import com.example.ClientApp.service.ClientService;
 import com.example.ClientApp.service.ScoreService;
-import io.swagger.annotations.Api;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/app")
-@Api(tags = "Exemplo de API", description = "Exemplo de API para demonstração")
 public class ClientController {
 
     @Autowired
